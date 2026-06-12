@@ -42,3 +42,19 @@
   align-items: center;
   gap: 10px;
 }
+.navbar li{
+  cursor: pointer;
+}
+.navbar-search-icon input{
+  position: relative;
+}
+
+.navbar-search-icon .dot{
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  min-width: 10px;
+  min-height: 10px;
+  background: tomato;
+  border-radius: 5px;
+}

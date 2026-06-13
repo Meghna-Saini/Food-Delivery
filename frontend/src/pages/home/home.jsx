@@ -1,12 +1,15 @@
 import React from 'react'
+import Header from '../../components/Header/Header'
+import ExploreMenu from '../../components/ExploreMenu/ExploreMenu'
 import './home.css'
-const home = () => {
+const Home = () => {
   return (
     <div>
       <Header/>
+      <ExploreMenu/>
     </div>
   )
 }
 
-export default home
+export default Home
 

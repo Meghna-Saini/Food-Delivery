@@ -1,36 +1,120 @@
-.header{
+.header {
   height: 34vw;
-  margin : 30 px auto ;
-  background: url('/header_img.png') no-repeat;
+  margin: 30px auto;
+  background: url('/header_img.png') no-repeat center;
   background-size: contain;
   position: relative;
 }
-.header-contents{
+
+.header-contents {
   position: absolute;
   left: 6vw;
-  display: flex;
-  gap: 1.5vw;
-  flex-direction: column;
-  align-items: start;
-  max-width: 50%;
   bottom: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5vw;
+  max-width: 50%;
   animation: fadeIn 3s;
 }
-.header-contents h2{
-  font-weight: 500;
+
+.header-contents h2 {
+  color: white;
+  font-weight: 600;
   font-size: max(4.5vw, 24px);
-  color: white;
+  line-height: 1.1;
 }
-.header-contents p{
-  font-size: 1vw;
+
+.header-contents p {
   color: white;
+  font-size: max(1vw, 14px);
+  line-height: 1.6;
 }
-.header-contents button{
-  background-color:white;
-  color:#747474;
+
+.header-contents button {
   border: none;
-  font-size: max(1vw, 13px);
+  color: #555;
+  background: white;
+  font-weight: 500;
   padding: 1vw 3vw;
   border-radius: 50px;
-  font-weight: 500;
+  cursor: pointer;
+  font-size: max(1vw, 13px);
+  transition: all 0.3s ease;
+}
+
+.header-contents button:hover {
+  transform: scale(1.05);
+}
+
+/* Tablet */
+
+@media (max-width: 1050px) {
+  .header {
+    height: 38vw;
+  }
+
+  .header-contents {
+    max-width: 55%;
+  }
+
+  .header-contents p {
+    font-size: 14px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .header {
+    height: 60vw;
+    background-size: cover;
+    border-radius: 15px;
+  }
+
+  .header-contents {
+    max-width: 75%;
+    left: 5vw;
+    bottom: 8%;
+    gap: 12px;
+  }
+
+  .header-contents h2 {
+    font-size: 30px;
+  }
+
+  .header-contents p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .header-contents button {
+    padding: 10px 22px;
+    font-size: 14px;
+  }
+}
+
+/* Small Mobile */
+
+@media (max-width: 480px) {
+  .header {
+    height: 75vw;
+  }
+
+  .header-contents {
+    max-width: 85%;
+  }
+
+  .header-contents h2 {
+    font-size: 22px;
+  }
+
+  .header-contents p {
+    display: none; /* optional for cleaner mobile view */
+  }
+
+  .header-contents button {
+    padding: 10px 18px;
+    font-size: 13px;
+  }
 }

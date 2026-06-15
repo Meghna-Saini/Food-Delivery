@@ -1,25 +1,56 @@
 import React from 'react'
 import './ExploreMenu.css'
-import {menu_list} from '../../assets/assets'
-const ExploreMenu = ({category, setCategory}) => {
+import { menu_list } from '../../assets/assets'
+
+const ExploreMenu = ({ category, setCategory }) => {
+
+  const handleCategoryClick = (menuName) => {
+    setCategory(prev => prev === menuName ? "All" : menuName)
+  }
+
   return (
-    <div className='explore-menu' id='explore-menu'>
-      <h1>Explore our Menu</h1>
-      <p className='explore-menu-test'>Choose from a variety of delicious dishes prepared with the finest ingredients.Our chefs use only the freshest ingredients to create dishes that are both satisfying and nutritious.</p>
-      <div className="explore-menu-list">
-        {menu_list.map((item, index) => {
-          return (
-            <div onClick={() => setCategory(prev => prev === item.menu_name ? "All" : item.menu_name)}  key={index} className="explore-menu-list-item">
-              <img className={category === item.menu_name ? "active" : ""} src={item.menu_image} alt={item.name} />
-              
-              <p>{item.menu_name}</p>
-              
-            </div>
-          )
-        })}
+    <section className='explore-menu' id='explore-menu'>
+
+      <div className="explore-menu-header">
+        <h1>Explore Our Menu</h1>
+
+        <p className='explore-menu-text'>
+          Discover a wide range of delicious dishes crafted with fresh,
+          high-quality ingredients. From comforting classics to exciting
+          new flavors, there's something for everyone.
+        </p>
+
+        {category !== "All" && (
+          <div className="selected-category">
+            Showing: <span>{category}</span>
+          </div>
+        )}
       </div>
+
+      <div className="explore-menu-list">
+
+        {menu_list.map((item, index) => (
+          <div
+            key={index}
+            className={`explore-menu-list-item ${
+              category === item.menu_name ? "selected" : ""
+            }`}
+            onClick={() => handleCategoryClick(item.menu_name)}
+          >
+            <img
+              src={item.menu_image}
+              alt={item.menu_name}
+              className={category === item.menu_name ? "active" : ""}
+            />
+
+            <p>{item.menu_name}</p>
+          </div>
+        ))}
+
+      </div>
+
       <hr />
-    </div>
+    </section>
   )
 }
 

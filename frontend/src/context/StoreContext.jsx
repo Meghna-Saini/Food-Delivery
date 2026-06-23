@@ -12,11 +12,17 @@ const [cartItems, setCartItems] = useState({});
 const url = "http://localhost:4000"
 const [token,setToken] = useState("");
 const [foodList,setFoodList] = useState([])
-const addToCart = (itemId) => {
+const addToCart = async(itemId) => {
+        
         if(!cartItems[itemId]){
                 setCartItems((prev) => ({...prev, [itemId]: 1}))
         } else {
                 setCartItems((prev) => ({...prev, [itemId]: prev[itemId] + 1}))
+        }
+        if(token){
+                
+                await axios.post(url+"/api/cart/add",{itemId},{headers:{token}})
+                console.log("Sending:", { itemId });
         }
 }
 const removeFromCart = (itemId) => {
@@ -40,16 +46,12 @@ const removeFromCart = (itemId) => {
    useEffect(()=>{
      async function loadData(){
         await fetchFoodList();
-
-        if (localStorage.getItem("token")) {
-      setToken(localStorage.getItem("token"));
-    }
      }
      loadData();
    },[])
 
        const ContextValue = {
-        food_list,
+        food_list: foodList,
         cartItems,
         setCartItems,
         addToCart,
